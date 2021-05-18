@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Livro {
@@ -23,8 +24,7 @@ public class Livro {
 	private String autor;
 	
 	@ElementCollection(targetClass = Pagina.class, fetch = FetchType.EAGER)
-	@Column
-	@Enumerated(EnumType.STRING)
+	@OneToMany(mappedBy = "livro")
 	private List<Pagina> paginas;
 
 
